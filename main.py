@@ -42,7 +42,7 @@ def get_appropriate_width_height(total_pixels: int):
         if ratio > 0.65 and ratio < 0.85:
             return (width, height)
 
-    return (50, get_height_for_width(50, total_pixels))
+    return (250, get_height_for_width(250, total_pixels))
 
 
 parser = argparse.ArgumentParser(
@@ -74,6 +74,9 @@ repo_parts = args.repo.split('/')
 
 tree = get_repo_files(repo_parts[0], repo_parts[1], args.branch)
 
+if not len(tree):
+    print('Unable to retrive tree.')
+    exit(1)
 
 hash_length = 36
 hex_length = 6
@@ -82,7 +85,7 @@ total_pixels = (hash_length/hex_length) * len(tree)
 
 if args.width:
     image_width = args.width
-    image_height = get_height_for_width(args.width)
+    image_height = get_height_for_width(args.width, total_pixels)
 else:
     (image_width, image_height) = get_appropriate_width_height(total_pixels)
 
@@ -92,7 +95,6 @@ x = 0
 y = 0
 
 with Halo(text='Generating image', spinner='moon'):
-
     for sha in tree.values():
         short_sha = sha[:36]
         chunks = [short_sha[i:i+6] for i in range(0, len(short_sha), 6)]
