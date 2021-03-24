@@ -7,9 +7,9 @@ A small utility to generate an image based on the SHA vaules of a github tree.
 ### Docker Usage
 
 ```bash
-docker run -v $(pwd):/app/images 133ea6 [REPO NAME]
+docker run -v $(pwd):/app/images philwc/repo-col [REPO NAME]
 
-docker run -v $(pwd):/app/images 133ea6 philwc/repo-col
+docker run -v $(pwd):/app/images philwc/repo-col philwc/repo-col
 ```
 
 ### Manual Usage
@@ -25,7 +25,7 @@ pip3 install -r requirements.txt
 ### Docker Help
 
 ```bash
-docker run -v $(pwd):/app/images 133ea6 -h
+docker run -v $(pwd):/app/images philwc/repo-col -h
 ```
 
 ### Manual Help
