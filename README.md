@@ -1,6 +1,6 @@
 # repo-col
 
-A small utility to generate an image based on the SHA vaules of a github tree.
+A small utility to generate an image based on the SHA values of a github tree.
 
 ## Usage
 
